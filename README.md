@@ -1,15 +1,22 @@
 # BetterIndexName
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/better_index_name`. To experiment with that code, run `bin/console` for an interactive prompt.
+Adds a little smarts to ActiveRecords index name generation to try and fit them into 63 characters or less for Postgres and MySQL.
 
-TODO: Delete this and the text above, and describe your gem
+Tries in the following ways:
+- change polymorphic references to just the name of the relation
+- change `index_` to `ix_`
+- remove common strings from column names
+- remove leading parts of the table name until there's only one
+- change the columnn names used in the index to a hash
+- change the table name to a hash if shorter
+The end.  If it's still too long, you'll have to name it manually
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'better_index_name'
+gem "better_index_name"
 ```
 
 And then execute:
@@ -20,10 +27,6 @@ Or install it yourself as:
 
     $ gem install better_index_name
 
-## Usage
-
-TODO: Write usage instructions here
-
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
@@ -32,7 +35,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/better_index_name. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/better_index_name/blob/development/CODE_OF_CONDUCT.md).
+Bug reports and pull requests are welcome on GitHub at https://github.com/bsharpe/better_index_name. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/bsharpe/better_index_name/blob/development/CODE_OF_CONDUCT.md).
 
 ## License
 
