@@ -4,10 +4,13 @@ Adds a little smarts to ActiveRecords index name generation to try and fit them 
 
 Tries in the following ways:
 - change polymorphic references to just the name of the relation
+  - e.g. `relation_type_and_relation_id` becomes `relation`
 - change `index_` to `ix_`
 - remove common strings from column names
+  - e.g. `field_id_1_and_field_id_2` becomes `id_1_and_id_2`
 - remove leading parts of the table name until there's only one
-- change the columnn names used in the index to a hash
+  - e.g. `very_long_table_of_items` becomes `long_table_of_items, then table_of_items, then of_items, then items` until it fits
+- change the column names used in the index to a hash
 - change the table name to a hash if shorter
 The end.  If it's still too long, you'll have to name it manually
 
