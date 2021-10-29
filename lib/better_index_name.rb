@@ -25,7 +25,7 @@ module BetterIndexName
   ## 2. change 'index_' to 'ix_'
   ## 3. remove common strings from column names
   ## 4. remove leading parts of the table name until there's only one
-  ## 5. change the columnn names used in the index to a hash
+  ## 5. change the column names used in the index to a hash
   ## 6. change the table name to a hash if shorter
   ## The end.  If it's still too long, you'll have to name it manually
   def compress_index_name(name)
